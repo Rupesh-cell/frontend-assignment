@@ -1,0 +1,109 @@
+.main-nav {
+  background: #033551;
+  .nav-contents {
+    display: flex;
+    justify-content: Space-between;
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+    .logo {
+      padding-top: 24px;
+    }
+    .searchbar {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      .me-2 {
+        width: 100%;
+        max-width: 500.7px;
+        height: 45px;
+        left: 431px;
+        padding: 10px;
+        background: #f2eded;
+        border-radius: 4px;
+        border: none;
+        opacity: 92%;
+        font-size: 18px;
+        font-weight: 500px;
+      }
+      .me-2:focus-visible {
+        outline: 1px solid #ffffff;
+        opacity: 100%;
+        background: #ffffff;
+      }
+      .me-2:hover {
+        opacity: 100%;
+      }
+    }
+    .other-items {
+      display: flex;
+      justify-content: Space-between;
+      gap: 35px;
+      .login {
+        display: flex;
+        justify-content: Space-between;
+        padding-top: 24px;
+        h2 {
+          margin: 0px;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          color: #ffffff;
+          padding-right: 8px;
+        }
+        img {
+          height: 25px;
+          width: 20px;
+        }
+      }
+      .cart {
+        padding-top: 24px;
+
+        img {
+          height: 26px;
+          width: 26px;
+        }
+        div {
+          background: white;
+          border-radius: 40px;
+          border: 1px solid white;
+          height: 13px;
+
+          align-items: center;
+          margin-top: -36px;
+          margin-left: 16px;
+          h2 {
+            margin: 0px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+            margin-top: -2.5px;
+          }
+        }
+      }
+    }
+  }
+  .second-nav {
+    background: white;
+    background: #0f6799;
+    border-top: 1px solid white;
+
+    .sec-nav-items {
+      width: 100%;
+      margin: auto;
+      height: 57px;
+      max-width: 1140px;
+      display: flex;
+      justify-content: space-between;
+
+      a {
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 16px;
+        color: #ffffff;
+        padding-top: 19px;
+      }
+    }
+  }
+}
