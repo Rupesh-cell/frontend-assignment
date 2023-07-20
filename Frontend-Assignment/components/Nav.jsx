@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import "../Scss/nav.scss";
 import Form from "react-bootstrap/Form";
 import { NavLink, Link } from "react-router-dom";
-import Profile from "../Assets/Profile.svg";
 import Cart from "../Assets/Cart.svg";
-import Logo from "../Assets/Logo.svg";
-import Login from "./Login";
 
 const Nav = () => {
   const [modal, setModal] = useState(false);
@@ -14,7 +11,7 @@ const Nav = () => {
       <div className="main-nav">
         <div className="nav-contents">
           <div className="logo">
-            <img src={Logo} alt="" />
+            <h1>OnlineStore</h1>
           </div>
           <div className="searchbar">
             <Form className="d-flex">
@@ -27,7 +24,7 @@ const Nav = () => {
             </Form>
           </div>
           <div className="other-items">
-            <Link
+            {/* <Link
               className="login"
               onClick={() => {
                 setModal = true;
@@ -35,7 +32,7 @@ const Nav = () => {
             >
               <h2>Login</h2>
               <img src={Profile} alt="" />
-            </Link>
+            </Link> */}
 
             <div className="cart">
               <img src={Cart} alt="" />
@@ -57,7 +54,6 @@ const Nav = () => {
           </div>
         </div>
       </div>
-      <Login show={modal} onHide={() => setModal(false)} />
     </>
   );
 };
