@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Col, Row, Card, Button } from "react-bootstrap";
 import "../Scss/cards.scss";
 import axios from "axios";
+import Featured from "./Featured";
 
-export default function Cards() {
+export default function Cards(props) {
+  console.log(props);
   const [products, setProducts] = useState([]);
-  
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const productsPerRow = 12;
+  const [next, setNext] = useState(productsPerRow);
+
+  const loadMore = () => {
+    setNext(next + productsPerRow);
+  };
 
   const getProducts = () => {
     const options = {
       method: "GET",
-      url: "https://fakestoreapi.com/products",
+      url: "https://fakestoreapi.com/products/",
     };
 
     axios
@@ -26,8 +30,6 @@ export default function Cards() {
         console.error(error);
       });
   };
-  console.log(products)
- 
 
   useEffect(() => {
     getProducts();
@@ -36,33 +38,52 @@ export default function Cards() {
   return (
     <div className="card-collector">
       <div className="new">
-        <h2>Featured Products</h2>
+        {props.Featured ? <h2>Featured Products</h2> : <h2 id="scrollnow">Just For You</h2>}
         <div className="cards-c">
-          {products ? (
-            products?.slice(0, 8).map((items, index) => {
-              return (
-                <Card sx={{ maxWidth: 265 }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="140"
-                      src={items.image}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {items.title}
-                      </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                        Rs: {items.price}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions></CardActions>
-                </Card>
-              );
-            })
+          {props.Featured ? (
+            <Row xs={2} md={3} lg={4} className="g-2">
+              {products?.slice(14, 21).map((items, index) => (
+                <Col key={index}>
+                  <Card>
+                    <Card.Img variant="top" src={items.image} />
+                    <Card.Body>
+                      <Card.Title>{items.title}</Card.Title>
+                      <Card.Text>
+                        Rs:
+                        {items.price}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
           ) : (
-            <h1>No data available</h1>
+            <>
+              <Row xs={2} md={3} lg={4} className="g-2">
+                {products?.slice(0, next).map((items, index) => (
+                  <Col key={index}>
+                    <Card>
+                      <Card.Img variant="top" src={items.image} />
+                      <Card.Body>
+                        <Card.Title>{items.title}</Card.Title>
+                        <Card.Text>
+                          Rs:
+                          {items.price}
+                        </Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+
+              <div className="seemore-btn d-flex justify-content-center py-5">
+                {next < products?.length && (
+                  <Button className="use-btn" onClick={loadMore}>
+                    See More
+                  </Button>
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>
