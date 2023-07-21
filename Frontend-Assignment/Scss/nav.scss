@@ -1,15 +1,55 @@
 .container-fluid {
   background-color: #033551 !important;
   height: 80px;
-  .nav-items {
-    display: flex;
+  padding: 0 10% !important;
+  margin: auto;
 
-    margin: auto;
-    .navbar-brand {
-      color: white;
+  .navbar-brand {
+    color: white !important;
+    :hover {
+      color: white !important;
     }
+  }
+
+  .form-d {
+    width: 100%;
+    display: flex;
+    gap: 14%;
+   
     .searchbar {
       height: 50px;
+      width: 100%;
+      float: right;
+    }
+    .form{
+        width: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .container-fluid {
+    padding: 0px 5px !important;
+    height: auto !important;
+
+    .form-d {
+      display: grid;
+      gap: 3px;
+      width: 100%;
+      grid-template-rows: auto auto auto;
+
+      .searchbar {
+        height: 50px;
+        width: 100%;
+      }
+      .form {
+        width: 100%;
+        grid-row-start: 3;
+        grid-area: 2 / span 3 / 2 / 4;
+        padding-left: 13px;
+      }
+      img {
+        grid-column-start: 3;
+      }
     }
   }
 }
