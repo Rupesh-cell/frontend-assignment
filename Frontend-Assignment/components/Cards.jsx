@@ -39,7 +39,7 @@ export default function Cards() {
         <h2>Featured Products</h2>
         <div className="cards-c">
           {products ? (
-            products?.map((items, index) => {
+            products?.slice(0, 8).map((items, index) => {
               return (
                 <Card sx={{ maxWidth: 265 }}>
                   <CardActionArea>

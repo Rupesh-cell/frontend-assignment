@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Scss/nav.scss";
 import Form from "react-bootstrap/Form";
+import { Container } from "react-bootstrap"
 import { NavLink, Link } from "react-router-dom";
 import Cart from "../Assets/Cart.svg";
 
@@ -8,6 +9,7 @@ const Nav = () => {
   const [modal, setModal] = useState(false);
   return (
     <>
+  
       <div className="main-nav">
         <div className="nav-contents">
           <div className="logo">
@@ -54,6 +56,7 @@ const Nav = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
