@@ -3,6 +3,7 @@ import { Col, Row, Card, Button } from "react-bootstrap";
 import "../Scss/cards.scss";
 import axios from "axios";
 import Featured from "./Featured";
+import { Link } from "react-router-dom";
 
 export default function Cards(props) {
   console.log(props);
@@ -38,30 +39,17 @@ export default function Cards(props) {
   return (
     <div className="card-collector">
       <div className="new">
-        {props.Featured ? <h2>Featured Products</h2> : <h2 id="scrollnow">Just For You</h2>}
+        {props.Featured ? (
+          <h2>Featured Products</h2>
+        ) : (
+          <h2 id="scrollnow">Just For You</h2>
+        )}
         <div className="cards-c">
           {props.Featured ? (
             <Row xs={2} md={3} lg={4} className="g-2">
               {products?.slice(14, 21).map((items, index) => (
                 <Col key={index}>
-                  <Card>
-                    <Card.Img variant="top" src={items.image} />
-                    <Card.Body>
-                      <Card.Title>{items.title}</Card.Title>
-                      <Card.Text>
-                        Rs:
-                        {items.price}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          ) : (
-            <>
-              <Row xs={2} md={3} lg={4} className="g-2">
-                {products?.slice(0, next).map((items, index) => (
-                  <Col key={index}>
+                  <Link to={`/productDes/${items.id}`}>
                     <Card>
                       <Card.Img variant="top" src={items.image} />
                       <Card.Body>
@@ -72,6 +60,27 @@ export default function Cards(props) {
                         </Card.Text>
                       </Card.Body>
                     </Card>
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          ) : (
+            <>
+              <Row xs={2} md={3} lg={4} className="g-2">
+                {products?.slice(0, next).map((items, index) => (
+                  <Col key={index}>
+                    <Link to={`/productDes/${items.id}`}>
+                      <Card>
+                        <Card.Img variant="top" src={items.image} />
+                        <Card.Body>
+                          <Card.Title>{items.title}</Card.Title>
+                          <Card.Text>
+                            Rs:
+                            {items.price}
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                    </Link>
                   </Col>
                 ))}
               </Row>
