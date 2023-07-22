@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Cart from "../Assets/Cart.svg";
 import "../Scss/nav.scss";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 
 function NavScrollExample() {
   const [search, setSearch] = useState("");
@@ -41,7 +41,9 @@ function NavScrollExample() {
               onChange={(e) => setSearch(e.target.value)}
             />
           </Form>
-          <img src={Cart} alt="" />
+          <Link to = "/cart">
+            <img src={Cart} alt="" />
+          </Link>
         </div>
       </Container>
     </Navbar>

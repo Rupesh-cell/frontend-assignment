@@ -37,13 +37,13 @@ const Search = () => {
         </div>
 
         <Row xs={2} md={4} className="g-4 cards-row my-5">
-          {products?.map((_, idx) => {
+          {products?.map((items, id) => {
             return (
-              <Col className="cards-col" key={idx}>
-                <Link
+              <Col className="cards-col" key={id}>
+                {/* <Link
                   to={`/description/${_.id}/${_.name}`}
                   className="card-link"
-                >
+                > */}
                   <Card>
                       <Card.Img variant="top" src={items.image} />
                       <Card.Body>
@@ -54,7 +54,7 @@ const Search = () => {
                         </Card.Text>
                       </Card.Body>
                     </Card>
-                </Link>
+                {/* </Link> */}
               </Col>
             );
           })}
