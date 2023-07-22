@@ -2,12 +2,18 @@ create-vite is a tool to quickly start a project from a basic template for popul
 
 To run this use following command in terminal
 cd Frontend-Assignment
+**************************
 
-npm install
-npm run dev
+#npm install
+**********
+#npm run dev
+*******
 
 Tech used:
 Reactjs as frontend while given api of fake api is used to get data.
+******
 Axios is used to handle api fetch.
+*****
 react-bootstrap is used for better ui design
+*******
 mui icons for few icons.
