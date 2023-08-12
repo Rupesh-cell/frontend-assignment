@@ -1,25 +1,76 @@
-import React from 'react'
-import '../Scss/description.scss'
+import React, { useState, useEffect } from "react";
+import "../Scss/description.scss";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
+
 
 const Description = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState([]);
+  const [idx, setIdx] = useState();
+  const [variant, setVariant] = useState("anything")
+
+
+//   const addtoCartClick = () => {
+//     const products = {
+//         ...product,
+// 		variant : variant,
+
+       
+//     };
+
+//     dispatch(
+//         addProduct({
+//             product: products,
+// 			quantity: 1,
+            
+//         })
+//     );
+// };
+
+  useEffect(() => {
+    setIdx(id);
+  }, [id]);
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      url: "https://fakestoreapi.com/products/" + idx + "/",
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        setProduct(response.data);
+          console.log(response.data);
+      })
+
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [idx, id]);
+
   return (
     <>
-    <div class="container">
+    <Nav/>
+      <div className="container">
         <div class="product-image">
-          <img src="https://img.freepik.com/premium-psd/isometric-plant-3d-rendering_28315-3608.jpg" alt="Product Image" />
+          <img src={product?.image} alt="Product Image" />
         </div>
-        <div class="product-description">
-          <h1>ZZ plant</h1>
-          <p>Sleek and timeless. Titanium glasses with an innovative bridge. A frame to suit every face, Morgan is a classic ‘panto’ shape. .</p>
-          <h2>Price: 1000</h2>
-          <button>Add to Cart</button>
+        <div className="product-description">
+          <h1>{product?.title}</h1>
+
+          <h2>Price: Rs.{product?.price}</h2>
+          <button >Add to Cart</button>
           <h1>Description</h1>
-          <p>Sleek and timeless. Titanium glasses with an innovative bridge. A frame to suit every face, Morgan is a classic ‘panto’ shape. Named after James Morgan, the engineer who built the Regent's Canal, it features custom elements including fluid single piece bridge, adjustable nose pads and temple tips based on Constantin Brâncuși's Bird in Space.</p>
+          <p>{product?.description}</p>
         </div>
       </div>
+      <Footer/>
     </>
-    
-  )
-}
+  );
+};
 
-export default Description
+export default Description;

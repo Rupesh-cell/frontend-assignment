@@ -49,7 +49,7 @@ export default function Cards(props) {
             <Row xs={2} md={3} lg={4} className="g-2">
               {products?.slice(14, 21).map((items, index) => (
                 <Col key={index}>
-                  <Link to={`/productDes/${items.id}`}>
+                  <Link to={`/productDes/${items.id}/`}>
                     <Card>
                       <Card.Img variant="top" src={items.image} />
                       <Card.Body>
@@ -69,7 +69,7 @@ export default function Cards(props) {
               <Row xs={2} md={3} lg={4} className="g-2">
                 {products?.slice(0, next).map((items, index) => (
                   <Col key={index}>
-                    <Link to={`/productDes/${items.id}`}>
+                    <Link to={`/productDes/${items.id}/`}>
                       <Card>
                         <Card.Img variant="top" src={items.image} />
                         <Card.Body>

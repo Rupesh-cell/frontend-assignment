@@ -1,9 +1,12 @@
 import React from 'react'
 import '../Scss/cart.scss'
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
 const Cart = () => {
   return (
     <>
+    <Nav/>
     <header>
 		<h1>My Cart</h1>
 	</header>
@@ -48,6 +51,7 @@ const Cart = () => {
 			<button>Checkout</button>
 		</div>
 	</main>
+    <Footer/>
     </>
   )
 }

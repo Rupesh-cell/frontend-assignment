@@ -21,7 +21,7 @@ function NavScrollExample() {
     >
       <Container fluid>
         <div className="form-d">
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <h2>OnlineStore</h2>
           </Navbar.Brand>
 
